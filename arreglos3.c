@@ -1,26 +1,33 @@
-/*
- * Este programa utiliza un apuntadores para invertir el contenido de un arreglo
- *
- */
-
+//Este programa utiliza un apuntadores para invertir el contenido de un arreglo
 #include <stdio.h>
 
 int main() {
     int arr[5] = {1, 2, 3, 4, 5};
-    // TODO: (6) Declara el apuntador al inicio del arreglo
-    // TODO: (7) Declara el apuntador al final del arreglo
-    
+    int* start = arr;
+    int* end = arr + 4;
+    /* ALTERNATIVA: 
+    int size = sizeof(arr)/sizeof(arr[0]);
+    int* end = start + (size - 1);
+    */
 
-    // TODO: (8) Imprime el arreglo original
+    for(int i = 0; i < 5 ; i++) {
+        printf("%d ", *(start + i));
+    }
+    printf("\n");
 
-    // TODO: (9) Crea un ciclo que invierita el arreglo, TIP: es neceario usar un apuntador temporal
-    
-    // Mostrar el arreglo invertido
+    while (start < end)  {
+        int temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+
     printf("[ ");
     for (int i = 0; i < 5; i++) {
         printf("%d, ", arr[i]);
     }
-    printf(" ]\n");
+    printf("]\n");
     
     return 0;
 }
